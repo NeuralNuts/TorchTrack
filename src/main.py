@@ -25,7 +25,6 @@ class SimpleCNN(nn.Module):
         x = x.view(-1, 16 * 16 * 16)
         x = F.relu(self.fc1(x))
         x = self.fc2(x)
-        #pass
         return x
 
 transform = transforms.Compose([
@@ -50,11 +49,11 @@ def read_term_input(model):
     print(model_arch)
 
 def set_model_data(model_name, model_state_dict, model_optim):
-    #model_state_dict = model_state_dict.state_dict()
-
         for var_name in model_optim.state_dict():
             model_architecture = model.state_dict()
-            model_architecture_json = {key: model_architecture[key].size() for key in model_architecture}
+            model_architecture_json = {
+                    key: model_architecture[key].size()
+                    for key in model_architecture}
             
             model_data = {
                     model_name: {
@@ -62,9 +61,9 @@ def set_model_data(model_name, model_state_dict, model_optim):
                         "model_optimizer": model_optim.state_dict()[var_name]
                         }
                     }
+
             with open("model_data.json", "w") as write_file:
-                json.dump(model_data, write_file)
+                json.dump(model_data, write_file, indent=2)
 
 if __name__ == '__main__':
-    print() 
     set_model_data("cnn", model, optim_t)
