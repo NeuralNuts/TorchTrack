@@ -1,11 +1,12 @@
-import json
-from api import track
+from numpy import mod
+from track_api import track
 import socketserver
-import os
+import torch
 from torchvision import transforms
 import torch.optim as optim
 import torch.nn as nn
 import torch.nn.functional as F
+
 
 def server_startup(Handler, PORT):
     with socketserver.TCPServer(("", PORT), Handler) as httpd:
@@ -32,38 +33,14 @@ transform = transforms.Compose([
     transforms.ToTensor(),
     ])
 
+
 num_classes = 10  # CIFAR-10 has 10 classes
 
 model = SimpleCNN()
-#model.load_state_dict(torch.load(r'saved_models/cifar10_model.pth'))
-#model.eval()
+model.load_state_dict(torch.load(r'saved_models/cifar10_model.pth'))
+model.eval()
 
 optim_t = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
 
-#handler = track.set_prediction(model);
-#server_startup(Handler, 8888);
-
-def read_term_input(model):
-    print(model)
-    model_arch = str(os.popen("python3 main.py").read().split())
-    print(model_arch)
-
-def set_model_data(model_name, model_state_dict, model_optim):
-        for var_name in model_optim.state_dict():
-            model_architecture = model.state_dict()
-            model_architecture_json = {
-                    key: model_architecture[key].size()
-                    for key in model_architecture}
-            
-            model_data = {
-                    model_name: {
-                        "model_architecure": model_architecture_json,
-                        "model_optimizer": model_optim.state_dict()[var_name]
-                        }
-                    }
-
-            with open("model_data.json", "w") as write_file:
-                json.dump(model_data, write_file, indent=2)
-
 if __name__ == '__main__':
-    set_model_data("cnn", model, optim_t)
+    track.parse_model_data("", model, optim_t)
