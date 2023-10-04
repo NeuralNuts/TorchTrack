@@ -1,15 +1,9 @@
-from logging import Handler
-import track
-import socketserver
+import numpy as np
+from PIL import Image
 from torchvision import transforms
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
-def server_startup(Handler, PORT):
-    with socketserver.TCPServer(("", PORT), Handler) as httpd:
-        print("Serving at port", PORT)
-        httpd.serve_forever()
 
 class SimpleCNN(nn.Module):
     def __init__(self, num_classes):
@@ -26,11 +20,6 @@ class SimpleCNN(nn.Module):
         x = self.fc2(x)
         return x
 
-# Transformation for the input image
-transform = transforms.Compose([
-    transforms.Resize((32, 32)),
-    transforms.ToTensor(),
-])
 
 num_classes = 10  # CIFAR-10 has 10 classes
 
@@ -38,10 +27,8 @@ model = SimpleCNN(num_classes)
 model.load_state_dict(torch.load('cifar10_model.pth'))
 model.eval()
 
-Handler = track.set_prediction(model);
-
-#server_startup(Handler, 8888);
-
-if __name__ == '__main__':
-    print() 
-    #server_startup(Handler, 8000);
+# Transformation for the input image
+transform = transforms.Compose([
+    transforms.Resize((32, 32)),
+    transforms.ToTensor(),
+])

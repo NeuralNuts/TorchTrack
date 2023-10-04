@@ -29,9 +29,9 @@ cifar_train_loader = DataLoader(cifar_train_dataset, batch_size=batch_size, shuf
 cifar_val_loader = DataLoader(cifar_val_dataset, batch_size=batch_size, shuffle=False)
 
 # Define a simple CNN model
-class SimpleCNN(nn.Module):
+class ExCNN(nn.Module):
     def __init__(self, num_classes):
-        super(SimpleCNN, self).__init__()
+        super(ExCNN, self).__init__()
         self.conv1 = nn.Conv2d(in_channels=3, out_channels=16, kernel_size=3, stride=1, padding=1)
         self.pool = nn.MaxPool2d(kernel_size=2, stride=2)
         self.fc1 = nn.Linear(16 * 16 * 16, 128)
@@ -58,7 +58,10 @@ train_dataset = datasets.CIFAR10(root='./data', train=True, download=True, trans
 train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
 
 # Initialize the model, loss function, and optimizer
-model = SimpleCNN(num_classes).to(device)
+model = ExCNN(num_classes).to(device)
+
+print(F"Arch: {model}")
+
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
@@ -83,7 +86,7 @@ for epoch in range(num_epochs):
 torch.save(model.state_dict(), 'cifar10_model.pth')
 
 # Load the trained model
-model = SimpleCNN(num_classes)
+model = ExCNN(num_classes)
 model.load_state_dict(torch.load('cifar10_model.pth'))
 model.eval()  # Set the model to evaluation mode
 
