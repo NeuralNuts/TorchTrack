@@ -33,7 +33,7 @@ class JsonModelData:
                 json_model_data = JsonModelData(self._model_name, self._model_architecture, 
                                                 self._model_optimizer, self._model_training_data)
             
-                print(json_model_data._model_architecture)
+                #print(json_model_data._model_architecture)
 
                 parse_model_data(json_model_data)
 
@@ -65,16 +65,37 @@ def parse_model_data(json_model_data):
 
     track.parse_model_data("Simple CNN", model, optim)            
     """
-    
+    #print(json_model_data)
+    test_4 = {
+                "model_name": json_model_data._model_name
+            }
+    print("test", test_4)
+
+
+    test = {
+                "model_architecure": json_model_data._model_architecture
+            }
+    print("test", test)
+
+    test_2 = {
+                "model_optimizer": json_model_data._model_optimizer
+            } 
+    print("test 2", test_2)
+
+    test_3 = {
+            "model_training_data": json_model_data._model_training_data
+        }
+    print("test 3", test_3)
+
     model_data = {
             json_model_data._model_name: {
-                "model_architecure": json_model_data._model_architecure,
+                "model_architecure": str(json_model_data._model_architecture),
                 "model_optimizer": json_model_data._model_optimizer,
                 "model_training_data": json_model_data._model_training_data,
             }
         }
         #model_data.update(model_data)
 
-    with open("model_data.json", "w") as write_file:
+    with open("model_data.json", "w+") as write_file:
         json.dump(model_data, write_file, indent=2)     
 
