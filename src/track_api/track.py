@@ -1,57 +1,47 @@
-from enum import global_str
 import json
-from struct import Struct
 
-global_str = "Something went wrong"
+global_error_msg = "Something went wrong"
 
 class JsonModelData:
-    def __init__(self, model_name, model_architecure, 
-                 model_optimizer, model_training_data): 
-        self.model_name = model_name
-        self.model_architecture = model_architecure
-        self.model_optimizer = model_optimizer
-        self.model_training_data = model_training_data
+    def __init__(self, _model_name: str, _model_architecure, 
+                 _model_optimizer, _model_training_data): 
+        self._model_name = _model_name
+        self._model_architecture = _model_architecure
+        self._model_optimizer = _model_optimizer
+        self._model_training_data = _model_training_data
 
-def set_model_state_dict(model_architecture):
-    try:
-        model_architecture_json = {
-                key: model_architecture[key].size()
-                for key in model_architecture
-                }
-        parse_model_data(model_architecture_json)
-    except:
-        print(global_str)
+    def set_model_state_dict(self):
+            model_architecture_json = {
+                    key: self._model_architecture[key].size()
+                        for key in self._model_architecture
+                    }
+            return model_architecture_json
 
-def set_model_optimizer(model_optimizer):
-    try:
-        for var_name in model_optimizer:
-            model_optimizer.state_dict()[var_name]
-        parse_model_data(*model_optimizer)
-    except:
-        print(global_str)
+    def set_model_optimizer(self):
+            for var_name in self._model_optimizer:
+                model_optimizer = self._model_optimizer[var_name]
+                return model_optimizer
 
-def set_model_training_data(epoch, loss, step, *args, **kwargs):
-    try:
-        training_data = {epoch, loss, step, args}
-        return training_data
-    except:
-        print(global_str)
+    def set_model_training_data(self):
+            training_data = [self._model_training_data]
+            return training_data
 
-def save_model_data(model_name: str):
-    try:
-        if model_name == "":
-            raise TypeError("model_name param must be string")
-        else:
-            parse_model_data(model_name)
-    except:
-        print(global_str)
+    def save_model_data(self):
+            if self._model_name == "":
+                raise TypeError("model_name param must be string")
+            else:
+                json_model_data = JsonModelData(self._model_name, self._model_architecture, 
+                                                self._model_optimizer, self._model_training_data)
+            
+                print(json_model_data._model_architecture)
 
+                parse_model_data(json_model_data)
 
 """
 Parses model architecture & model optimizer data
 from a pytorch model to a json file: "model_data.json"
 """
-def parse_model_data(*args, **kwargs):
+def parse_model_data(json_model_data):
     """
     Example code ->
 
@@ -75,25 +65,16 @@ def parse_model_data(*args, **kwargs):
 
     track.parse_model_data("Simple CNN", model, optim)            
     """
-    try:
-        model_name = kwargs.get("model_name", None)
-        model_architecure = kwargs.get("model_architecure", None)
-        model_optimizer = kwargs.get("model_optimizer", None)
-        model_training_data = kwargs.get("model_training_data", None)
-
-        model_data = {
-            model_name: {
-                "model_architecure": model_architecure,
-                "model_optimizer": model_optimizer,
-                "model_training_data": model_training_data,
+    
+    model_data = {
+            json_model_data._model_name: {
+                "model_architecure": json_model_data._model_architecure,
+                "model_optimizer": json_model_data._model_optimizer,
+                "model_training_data": json_model_data._model_training_data,
             }
         }
-        model_data.update(model_data)
+        #model_data.update(model_data)
 
-        with open("model_data.json", "w") as write_file:
-            json.dump(model_data, write_file, indent=2)     
+    with open("model_data.json", "w") as write_file:
+        json.dump(model_data, write_file, indent=2)     
 
-    except NameError:
-        print("Params not defined")
-    except:
-        print("Something went wrong?")
