@@ -14,6 +14,7 @@ import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
 import numpy as np
+from rich import print
 
 from torch.utils.data import DataLoader, dataset
 
@@ -24,7 +25,7 @@ transform = transforms.Compose([
 cifar_train_dataset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=transform)
 cifar_val_dataset = torchvision.datasets.CIFAR10(root='./data', train=False, download=True, transform=transform)
 
-batch_size = 32
+batch_size = 5
 cifar_train_loader = DataLoader(cifar_train_dataset, batch_size=batch_size, shuffle=True)
 cifar_val_loader = DataLoader(cifar_val_dataset, batch_size=batch_size, shuffle=False)
 
@@ -59,8 +60,6 @@ train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
 
 # Initialize the model, loss function, and optimizer
 model = ExCNN(num_classes).to(device)
-
-print(F"Arch: {model}")
 
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)

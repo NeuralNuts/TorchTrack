@@ -1,49 +1,7 @@
 {
-  "": {
-    "model_architecure": {
-      "conv1.weight": [
-        16,
-        3,
-        3,
-        3
-      ],
-      "conv1.bias": [
-        16
-      ],
-      "fc1.weight": [
-        128,
-        4096
-      ],
-      "fc1.bias": [
-        128
-      ],
-      "fc2.weight": [
-        10,
-        128
-      ],
-      "fc2.bias": [
-        10
-      ]
-    },
-    "model_optimizer": [
-      {
-        "lr": 0.001,
-        "momentum": 0.9,
-        "dampening": 0,
-        "weight_decay": 0,
-        "nesterov": false,
-        "maximize": false,
-        "foreach": null,
-        "differentiable": false,
-        "params": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5
-        ]
-      }
-    ]
+  "conv1.weight": {
+    "model_architecure": "conv1.bias",
+    "model_optimizer": "fc1.weight",
+    "model_training_data": "fc1.bias"
   }
 }

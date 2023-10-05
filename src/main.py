@@ -37,10 +37,13 @@ transform = transforms.Compose([
 num_classes = 10  # CIFAR-10 has 10 classes
 
 model = SimpleCNN()
-model.load_state_dict(torch.load(r'saved_models/cifar10_model.pth'))
-model.eval()
+track.set_model_state_dict(model.state_dict())
+#model.load_state_dict(torch.load(r'saved_models/cifar10_model.pth'))
+#model.eval()
 
 optim_t = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
+track.set_model_optimizer(optim_t.state_dict())
 
 if __name__ == '__main__':
-    track.parse_model_data("", model, optim_t)
+    print()
+    #track.parse_model_data("Simple CNN", model, optim_t, "")
