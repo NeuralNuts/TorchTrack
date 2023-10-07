@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from track_api import track 
+from track import track_functions 
 import torch.optim as optim
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
@@ -31,7 +31,7 @@ class MultiClassClassifier(nn.Module):
         x = self.fc2(x)
         return x
 
-model = MultiClassClassifier(input_size=X_train.shape[1], hidden_size=16, num_classes=3)  # Adjust num_classes for your dataset
+model = MultiClassClassifier(input_size=X_train.shape[1], hidden_size=16, num_classes=3)
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(model.parameters(), lr=0.1) 
 
@@ -58,11 +58,11 @@ for epoch in range(num_epochs):
             "loss": loss.item()
         }
 
-jsobj = track.JsonModelData("SimpleCNN", model, 0, training_arr)
-jsobj.set_model_state_dict()
-jsobj.set_model_optimizer()
-jsobj.set_model_training_data()
-jsobj.save_model_data()
+track = track_functions.JsonModelData("SimpleCNN", model, optimizer.state_dict(), training_arr)
+track.set_model_state_dict()
+track.set_model_optimizer()
+track.set_model_training_data()
+track.save_model_data()
 
 model.eval()
 

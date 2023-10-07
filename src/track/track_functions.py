@@ -1,5 +1,4 @@
 import json
-from os import error
 
 global_error_msg = "Something went wrong!"
 
@@ -12,16 +11,25 @@ class JsonModelData:
         self._model_training_data = _model_training_data
 
     def set_model_state_dict(self):
+        try:
             return self
+        except:
+            return None
 
     def set_model_optimizer(self):
+        try:
             for var_name in self._model_optimizer:
                 model_optimizer = self._model_optimizer[var_name]
                 return model_optimizer
+        except:
+            return None
 
     def set_model_training_data(self):
+        try:
             training_data = self._model_training_data
             return training_data
+        except:
+            return None
 
     def save_model_data(self):
             if self._model_name == "":
