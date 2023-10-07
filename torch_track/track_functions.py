@@ -37,7 +37,7 @@ class JsonModelData:
             else:
                 json_model_data = JsonModelData(self._model_name, self._model_architecture, 
                                                 self._model_optimizer, self._model_training_data)
-                __parse_model_data(json_model_data)
+                parse_model_data(json_model_data)
 
     def print_saved_model_data(self) -> bool:
         print(f"---------------------------------")
@@ -53,7 +53,7 @@ class JsonModelData:
 Parses model architecture & model op
 from a pytorch model to this json file: "model_data.json"
 """
-def __parse_model_data(json_model_data: JsonModelData):
+def parse_model_data(json_model_data):
     model_data = {
             json_model_data._model_name: {
                 "model_architecure": str(json_model_data._model_architecture),
@@ -62,5 +62,5 @@ def __parse_model_data(json_model_data: JsonModelData):
                 }
             }
 
-    with open("json_data/json_model_data.json", "w+") as write_file:
+    with open("json_data/model_data.json", "w+") as write_file:
         json.dump(model_data, write_file, indent=2)

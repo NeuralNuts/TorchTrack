@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from track import track_functions 
+from torch_track import track_functions 
 import torch.optim as optim
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
