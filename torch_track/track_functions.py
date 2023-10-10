@@ -55,11 +55,11 @@ from a pytorch model to this json file: "model_data.json"
 """
 def parse_model_data(json_model_data):
     model_data = {
-            json_model_data._model_name: {
+                "model_name": json_model_data._model_name,
                 "model_architecure": str(json_model_data._model_architecture),
                 "model_optimizer": str(json_model_data._model_optimizer),
                 "model_training_data": str(json_model_data._model_training_data),
-                }
+                
             }
 
     with open("json_data/model_data.json", "w+") as write_file:
