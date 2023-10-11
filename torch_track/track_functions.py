@@ -1,4 +1,5 @@
 import json
+import requests
 
 global_error_msg = "Something went wrong!"
 
@@ -57,10 +58,14 @@ def parse_model_data(json_model_data):
     model_data = {
                 "model_name": json_model_data._model_name,
                 "model_architecure": str(json_model_data._model_architecture),
-                "model_optimizer": str(json_model_data._model_optimizer),
-                "model_training_data": str(json_model_data._model_training_data),
+                "model_optimizer": json_model_data._model_optimizer,
+                "model_training_data": json_model_data._model_training_data,
                 
-            }
+    }
+    json_string = json.dumps(model_data, indent=4)
+    
+    post_endpoint = "https://torchtrackapp.azurewebsites.net/api/TorchTrack/PostModelData"
+    requests.post(post_endpoint, json = json_string)
 
-    with open("json_data/model_data.json", "w+") as write_file:
-        json.dump(model_data, write_file, indent=2)
+    #with open("json_data/model_data.json", "w+") as write_file:
+        #json.dump(model_data, write_file, indent=2)

@@ -1,6 +1,90 @@
 {
-  "model_name": "SimpleCNN",
+  "model_name": "Bing",
   "model_architecure": "MultiClassClassifier(\n  (fc1): Linear(in_features=4, out_features=16, bias=True)\n  (fc2): Linear(in_features=16, out_features=3, bias=True)\n)",
-  "model_optimizer": "{'state': {0: {'momentum_buffer': None}, 1: {'momentum_buffer': None}, 2: {'momentum_buffer': None}, 3: {'momentum_buffer': None}}, 'param_groups': [{'lr': 0.1, 'momentum': 0, 'dampening': 0, 'weight_decay': 0, 'nesterov': False, 'maximize': False, 'foreach': None, 'differentiable': False, 'params': [0, 1, 2, 3]}]}",
-  "model_training_data": "{10: {'epochs': 10, 'num_epochs': 100, 'loss': 0.7313016057014465}, 20: {'epochs': 20, 'num_epochs': 100, 'loss': 0.5556486248970032}, 30: {'epochs': 30, 'num_epochs': 100, 'loss': 0.4574427306652069}, 40: {'epochs': 40, 'num_epochs': 100, 'loss': 0.3947826623916626}, 50: {'epochs': 50, 'num_epochs': 100, 'loss': 0.35076767206192017}, 60: {'epochs': 60, 'num_epochs': 100, 'loss': 0.31778115034103394}, 70: {'epochs': 70, 'num_epochs': 100, 'loss': 0.29122063517570496}, 80: {'epochs': 80, 'num_epochs': 100, 'loss': 0.2688242495059967}, 90: {'epochs': 90, 'num_epochs': 100, 'loss': 0.24922344088554382}, 100: {'epochs': 100, 'num_epochs': 100, 'loss': 0.23157282173633575}}"
+  "model_optimizer": {
+    "state": {
+      "0": {
+        "momentum_buffer": null
+      },
+      "1": {
+        "momentum_buffer": null
+      },
+      "2": {
+        "momentum_buffer": null
+      },
+      "3": {
+        "momentum_buffer": null
+      }
+    },
+    "param_groups": [
+      {
+        "lr": 0.1,
+        "momentum": 0,
+        "dampening": 0,
+        "weight_decay": 0,
+        "nesterov": false,
+        "maximize": false,
+        "foreach": null,
+        "differentiable": false,
+        "params": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ]
+  },
+  "model_training_data": {
+    "10": {
+      "epochs": 10,
+      "num_epochs": 100,
+      "loss": 0.737850546836853
+    },
+    "20": {
+      "epochs": 20,
+      "num_epochs": 100,
+      "loss": 0.5443811416625977
+    },
+    "30": {
+      "epochs": 30,
+      "num_epochs": 100,
+      "loss": 0.44061538577079773
+    },
+    "40": {
+      "epochs": 40,
+      "num_epochs": 100,
+      "loss": 0.37821832299232483
+    },
+    "50": {
+      "epochs": 50,
+      "num_epochs": 100,
+      "loss": 0.33497899770736694
+    },
+    "60": {
+      "epochs": 60,
+      "num_epochs": 100,
+      "loss": 0.30200231075286865
+    },
+    "70": {
+      "epochs": 70,
+      "num_epochs": 100,
+      "loss": 0.2754131555557251
+    },
+    "80": {
+      "epochs": 80,
+      "num_epochs": 100,
+      "loss": 0.2532852292060852
+    },
+    "90": {
+      "epochs": 90,
+      "num_epochs": 100,
+      "loss": 0.23437121510505676
+    },
+    "100": {
+      "epochs": 100,
+      "num_epochs": 100,
+      "loss": 0.2179715782403946
+    }
+  }
 }

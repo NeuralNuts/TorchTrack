@@ -58,7 +58,7 @@ for epoch in range(num_epochs):
             "loss": loss.item()
         }
 
-track = track_functions.JsonModelData("SimpleCNN", model, optimizer.state_dict(), training_arr)
+track = track_functions.JsonModelData("Bing", model, optimizer.state_dict(), training_arr)
 track.set_model_state_dict()
 track.set_model_optimizer()
 track.set_model_training_data()
