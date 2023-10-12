@@ -58,11 +58,11 @@ for epoch in range(num_epochs):
             "loss": loss.item()
         }
 
-track = track_functions.JsonModelData("Test123", model, optimizer.state_dict(), training_arr)
-track.set_model_state_dict()
-track.set_model_optimizer()
-track.set_model_training_data()
-track.save_model_data()
+track_model = track_functions.TorchModelData("d", None, None)
+track_training = track_functions.TorchTrainingData(None)
+
+track_training.save_training_data()
+track_model.save_model_data()
 
 model.eval()
 

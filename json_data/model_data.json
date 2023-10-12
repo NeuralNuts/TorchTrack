@@ -1,6 +1,5 @@
 {
-  "model_name": "Test123",
-  "model_architecture": "MultiClassClassifier(\n  (fc1): Linear(in_features=4, out_features=16, bias=True)\n  (fc2): Linear(in_features=16, out_features=3, bias=True)\n)",
-  "model_optimizer": "{\"state\": {\"0\": {\"momentum_buffer\": null}, \"1\": {\"momentum_buffer\": null}, \"2\": {\"momentum_buffer\": null}, \"3\": {\"momentum_buffer\": null}}, \"param_groups\": [{\"lr\": 0.1, \"momentum\": 0, \"dampening\": 0, \"weight_decay\": 0, \"nesterov\": false, \"maximize\": false, \"foreach\": null, \"differentiable\": false, \"params\": [0, 1, 2, 3]}]}",
-  "model_training_data": "{\"10\": {\"epochs\": 10, \"num_epochs\": 100, \"loss\": 0.8551149964332581}, \"20\": {\"epochs\": 20, \"num_epochs\": 100, \"loss\": 0.6551149487495422}, \"30\": {\"epochs\": 30, \"num_epochs\": 100, \"loss\": 0.5115326046943665}, \"40\": {\"epochs\": 40, \"num_epochs\": 100, \"loss\": 0.42253145575523376}, \"50\": {\"epochs\": 50, \"num_epochs\": 100, \"loss\": 0.36540886759757996}, \"60\": {\"epochs\": 60, \"num_epochs\": 100, \"loss\": 0.32473331689834595}, \"70\": {\"epochs\": 70, \"num_epochs\": 100, \"loss\": 0.293765664100647}, \"80\": {\"epochs\": 80, \"num_epochs\": 100, \"loss\": 0.26906588673591614}, \"90\": {\"epochs\": 90, \"num_epochs\": 100, \"loss\": 0.24837109446525574}, \"100\": {\"epochs\": 100, \"num_epochs\": 100, \"loss\": 0.23056206107139587}}"
+  "model_name": "d",
+  "model_architecture": "None",
+  "model_optimizer": "null"
 }
