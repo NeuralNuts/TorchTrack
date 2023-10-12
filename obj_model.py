@@ -59,7 +59,7 @@ for epoch in range(num_epochs):
         }
 
 track_model = track_functions.TorchModelData("d", None, None)
-track_training = track_functions.TorchTrainingData(None)
+track_training = track_functions.TorchTrainingData(training_arr)
 
 track_training.save_training_data()
 track_model.save_model_data()
