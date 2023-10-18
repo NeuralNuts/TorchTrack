@@ -55,7 +55,7 @@ def parse_training_data(json_training_data):
                 
     }
     
-    post_endpoint = "https://torchtrackapp.azurewebsites.net/api/TorchTrack/PostModelData"
+    post_endpoint = "https://torchtrackapp.azurewebsites.net/api/TorchTrack/PostTrainginData"
     requests.post(post_endpoint, json = training_data)
 
     with open("json_data/training_data.json", "w+") as write_file:
@@ -70,7 +70,7 @@ def parse_model_data(json_model_data):
 
     model_data = {
                 "model_name": json_model_data._model_name,
-                "model_architecture": str(json_model_data._model_architecture),
+                "model_architecure": str(json_model_data._model_architecture),
                 "model_optimizer": str(json_string_model_opti),
                 
     }

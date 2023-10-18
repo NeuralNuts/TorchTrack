@@ -1,5 +1,5 @@
 {
-  "model_name": "d",
-  "model_architecture": "None",
-  "model_optimizer": "null"
+  "model_name": "CNN",
+  "model_architecure": "MultiClassClassifier(\n  (fc1): Linear(in_features=4, out_features=16, bias=True)\n  (fc2): Linear(in_features=16, out_features=3, bias=True)\n)",
+  "model_optimizer": "{\"state\": {\"0\": {\"momentum_buffer\": null}, \"1\": {\"momentum_buffer\": null}, \"2\": {\"momentum_buffer\": null}, \"3\": {\"momentum_buffer\": null}}, \"param_groups\": [{\"lr\": 0.1, \"momentum\": 0, \"dampening\": 0, \"weight_decay\": 0, \"nesterov\": false, \"maximize\": false, \"foreach\": null, \"differentiable\": false, \"params\": [0, 1, 2, 3]}]}"
 }

@@ -58,7 +58,7 @@ for epoch in range(num_epochs):
             "loss": loss.item()
         }
 
-track_model = track_functions.TorchModelData("d", None, None)
+track_model = track_functions.TorchModelData("CNN", model, optimizer.state_dict())
 track_training = track_functions.TorchTrainingData(training_arr)
 
 track_training.save_training_data()
