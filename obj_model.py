@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from torch_track import track_functions 
+from torch_track import track_functions
 import torch.optim as optim
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
@@ -61,8 +61,11 @@ for epoch in range(num_epochs):
 track_model = track_functions.TorchModelData("CNN", model, optimizer.state_dict())
 track_training = track_functions.TorchTrainingData(training_arr)
 
-track_training.save_training_data()
-track_model.save_model_data()
+track_training.save_training_data("file")
+track_model.save_model_data("file")
+#track_training.print_json_training_data()
+
+#track_model.save_model_data()
 
 model.eval()
 
